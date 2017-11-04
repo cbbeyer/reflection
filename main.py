@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 from serialize import to_json
+import sys
 
 
 ################################################
@@ -59,4 +60,9 @@ if __name__ == '__main__':
     p3 = Person('River Song/Melody Pond', 'F', b3, True, 91234.56, 2001, p1, p2, f3)
 
     # print
-    print(to_json(p3))
+    with open('output.json', 'w') as f:
+        orig_stdout = sys.stdout
+        sys.stdout = f
+        print(to_json(p3))
+        sys.stdout = orig_stdout
+    # print(to_json(p3))
